@@ -13,7 +13,7 @@
         let color = ["blue", "green", "pink"];
         let fgColor = ["#586fd9", "#5BCAAD", "#C54984"];      
         
-        let julianDayNumber = Math.round(2440587.5 + (new Date() / 86400000));
+        let julianDayNumber = Math.ceil(2440587.5 + (new Date() / 86400000));
         let p2 = julianDayNumber.toString();
 
         color.forEach((v, i) => {
