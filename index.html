@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="./js/qrcodegen.js"></script>
+
+</head>
+<body>
+    <canvas id="blue"></canvas>
+    <canvas id="green"></canvas>
+    <canvas id="pink"></canvas>
+    <script>
+        let p1 = ["💠", "❇️", "💟"];
+        let color = ["blue", "green", "pink"];
+        let fgColor = ["#586fd9", "#5BCAAD", "#C54984"];      
+        
+        let julianDayNumber = Math.round(2440587.5 + (new Date() / 86400000));
+        let p2 = julianDayNumber.toString();
+
+        color.forEach((v, i) => {
+            let hash = CryptoJS.HmacSHA256(p1[i] + p2, 'blackbox');
+            let str = hash.toString(CryptoJS.enc.Hex).substring(0, 5);
+            let qrStr = p1[i] + "✨" + str;
+            console.log(qrStr);
+            let qr = qrcodegen.QrCode.encodeSegments(
+                qrcodegen.QrSegment.makeSegments(qrStr), 
+                qrcodegen.QrCode.Ecc.HIGH, 
+                2, 2, 5, false
+            );
+            qr.drawCanvas(
+                8, 4, 
+                document.getElementById(v),
+                fgColor[i],
+                "#FFFFFF"
+            );
+        })
+    </script>
+</body>
