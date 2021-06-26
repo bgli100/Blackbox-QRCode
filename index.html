@@ -2,7 +2,6 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script src="./js/qrcodegen.js"></script>
-
 </head>
 <body style="text-align: center;">
     <h2>QRCode for Today</h2>
@@ -17,7 +16,7 @@
     <canvas id="green-yesterday"></canvas>
     <canvas id="pink-yesterday"></canvas>
     <br />
-    <h2 style="text-align: center;">QRCode for Tomorrow</h2>
+    <h2>QRCode for Tomorrow</h2>
     and here.
     <br />
     <canvas id="blue-tomorrow"></canvas>
@@ -28,7 +27,6 @@
         let color = ["blue", "green", "pink"];
         let fgColor = ["#586fd9", "#5BCAAD", "#C54984"];
         let dateOffset = ["yesterday", "today", "tomorrow"];
-        
         let julianDayNumber = Math.floor(2440588 + Date.now() / 86400000);
 
         color.forEach((v, i) => {
